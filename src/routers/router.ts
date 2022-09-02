@@ -7,6 +7,7 @@ const metaRouters = import.meta.globEager("./modules/*.ts");
 export const routerArray: RouteRecordRaw[] = [];
 Object.keys(metaRouters).forEach(item => {
 	Object.keys(metaRouters[item]).forEach((key: any) => {
+		console.log(metaRouters[item][key]);
 		routerArray.push(...metaRouters[item][key]);
 	});
 });

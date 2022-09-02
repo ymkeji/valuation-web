@@ -1,21 +1,23 @@
-FROM node:16.0
-# 创建vue项目根路径
-ADD . /web/
-# 切换vue项目根路径为工作路径
-WORKDIR /web/
+FROM node:16 as builder
 
-COPY package*.json ./
-# 安装项目依赖
-RUN npm config set registry https://registry.npmmirror.com
-RUN npm install -g pnpm
-RUN pnpm install --registry=https://registry.npmmirror.com
-COPY . .
-RUN pnpm build:dev
+WORKDIR /code
 
-FROM nginx:stable-alpine as production-stage
+ADD package.json /code
 
-COPY --from=build-stage /app/dist /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-EXPOSE 4000
+RUN npm install --registry=https://registry.npmmirror.com
 
-CMD ["nginx", "-g", "daemon off;"]
+ADD . /code
+
+RUN npm run build:test
+
+FROM nginx:alpine
+
+LABEL LittleSorce <Littley@outlook.ie>
+
+COPY --from=builder /code/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /code/dist  /usr/share/nginx/html/
+
+EXPOSE 80
+
+ENTRYPOINT ["nginx"]
+CMD ["-g","daemon off;"]

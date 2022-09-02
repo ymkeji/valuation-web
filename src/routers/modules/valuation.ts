@@ -1,6 +1,5 @@
 import { RouteRecordRaw } from "vue-router";
 import { Layout } from "@/routers/constant";
-// 错误页面模块
 const valuationRouter: Array<RouteRecordRaw> = [
 	{
 		path: "/valuation",
