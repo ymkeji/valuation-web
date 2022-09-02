@@ -1,9 +1,9 @@
 {
-	"name": "geeker-admin",
+	"name": "valuation-web",
 	"private": true,
 	"version": "0.0.6",
-	"description": "Geeker-Admin后台管理系统",
-	"author": "SpicyBoy <848130454@qq.com>",
+	"description": "valuation后台管理系统",
+	"author": "LittleYuan <littley@outlook.ie>",
 	"scripts": {
 		"dev": "vite",
 		"serve": "vite",

@@ -82,3 +82,14 @@ export namespace Upload {
 		fileUrl: string;
 	}
 }
+
+export namespace Goods {
+	export interface ResGoods {
+		alias: string;
+		id: number;
+		name: string;
+		price: number;
+		type: string;
+		unit: string;
+	}
+}
