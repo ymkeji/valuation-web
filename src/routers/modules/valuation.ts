@@ -12,7 +12,7 @@ const valuationRouter: Array<RouteRecordRaw> = [
 		children: [
 			{
 				path: "/valuation/index",
-				name: "home",
+				name: "valuation",
 				component: () => import("@/views/valuation/index.vue"),
 				meta: {
 					keepAlive: true,
