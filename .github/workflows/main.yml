@@ -4,8 +4,6 @@ on:
     branches:
       - main
   workflow_dispatch:
-env:
-  IMAGE_TAG: ${{ github.sha }}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,4 +22,4 @@ jobs:
           context: .
           push: true
           platforms: linux/amd64,linux/arm64
-          tags: $IMAGE_TAG
+          tags: a233/valuation-web:${{ github.sha }}
