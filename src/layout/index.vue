@@ -32,17 +32,18 @@ import Tabs from "./Tabs/index.vue";
 import Footer from "./Footer/index.vue";
 import cacheRouter from "@/routers/cacheRouter";
 import { onMounted } from "vue";
-import { getAuthButtons } from "@/api/modules/login";
+//import { getAuthButtons } from "@/api/modules/login";
 import { AuthStore } from "@/store/modules/auth";
 import { GlobalStore } from "@/store";
-
+import Button from "@/assets/json/button.json";
 const authStore = AuthStore();
 const globalStore = GlobalStore();
 const themeConfig = computed(() => globalStore.themeConfig);
 
 onMounted(async () => {
 	// 获取按钮权限列表
-	const res = await getAuthButtons();
+	//const res = await getAuthButtons();
+	const res = Button;
 	res.data && authStore.setAuthButtons(res.data);
 });
 </script>

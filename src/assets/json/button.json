@@ -1,0 +1,18 @@
+{
+	"code": 200,
+	"data": {
+		"useHooks": {
+			"add": true,
+			"batchAdd": true,
+			"export": true,
+			"batchDelete": true,
+			"status": true,
+			"view": true,
+			"edit": true,
+			"reset": true,
+			"delete": true
+		},
+		"useComponent": { "add": true, "batchAdd": true, "export": true, "batchDelete": true, "status": true }
+	},
+	"msg": "成功"
+}

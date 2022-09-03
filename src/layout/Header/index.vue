@@ -18,7 +18,7 @@
 				<Fullscreen id="fullscreen" />
 			</div>
 			<!-- User name -->
-			<span class="username">Geeker</span>
+			<span class="username">LittleY</span>
 			<!-- Avatar -->
 			<Avatar />
 		</div>

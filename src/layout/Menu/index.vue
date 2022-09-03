@@ -1,7 +1,7 @@
 <template>
 	<div
 		class="menu"
-		:style="{ width: isCollapse ? '65px' : '220px' }"
+		:style="{ width: isCollapse ? '65px' : '200px' }"
 		v-loading="loading"
 		element-loading-text="Loading..."
 		:element-loading-spinner="loadingSvg"

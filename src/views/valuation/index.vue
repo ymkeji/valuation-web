@@ -71,8 +71,8 @@ const goodsSelected = (tableIndex: number, val: any) => {
 <template>
 	<div>
 		<el-button size="small" @click="addRow">add row</el-button>
-		<el-table :data="dataSource">
-			<el-table-column prop="num" label="序号" width="180" />
+		<el-table :data="dataSource" highlight-current-row>
+			<el-table-column prop="num" label="序号" />
 			<el-table-column prop="name" label="货物(劳务名称)" width="180">
 				<template #default="scope">
 					<el-select
@@ -89,9 +89,9 @@ const goodsSelected = (tableIndex: number, val: any) => {
 			</el-table-column>
 			<el-table-column prop="type" label="规格型号" />
 			<el-table-column prop="unit" label="单位" />
-			<el-table-column prop="amount" label="数量">
+			<el-table-column prop="amount" label="数量" min-width="120">
 				<template #default="scope">
-					<el-input-number v-model="scope.row.amount" size="small" :precision="1" :step="1.0" />
+					<el-input-number v-model="scope.row.amount" :style="{ maxWidth: '90px' }" size="small" :precision="1" :step="1.0" />
 				</template>
 			</el-table-column>
 			<el-table-column prop="price" label="单价" />
@@ -100,7 +100,7 @@ const goodsSelected = (tableIndex: number, val: any) => {
 			<el-table-column prop="tax" label="税额" />
 			<el-table-column label="操作">
 				<template #default="scope">
-					<el-button size="small" type="danger" @click="handleDelete(scope.$index)">Delete</el-button>
+					<el-button icon="Delete" @click="handleDelete(scope.$index)" circle />
 				</template>
 			</el-table-column>
 		</el-table>
