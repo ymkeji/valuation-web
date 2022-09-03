@@ -5,7 +5,7 @@ on:
       - main
   workflow_dispatch:
 env:
-  IMAGE: sxiaohao/valuation
+  IMAGE: sxiaohao/valuation-web
   TAG: ${{ github.sha }}
 jobs:
   build:
