@@ -34,18 +34,12 @@ jobs:
           platforms: linux/amd64
           tags: ${{ env.IMAGE }}:${{ env.TAG }}
 
-  deploy:
-    name: deploy
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
       - name: Executing remote ssh commands using password
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
-          key: ${{ secrets.RSA_PRIVATE_KEY }}
           port: 22
           script: |
             docker stop valuation-web && docker rm valuation-web
