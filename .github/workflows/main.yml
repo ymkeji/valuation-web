@@ -28,4 +28,4 @@ jobs:
           context: .
           push: true
           platforms: linux/amd64
-          tags: a233/valuation-web:${{ github.sha }}
+          tags: sxiaohao/valuation-web:${{ github.sha }}
