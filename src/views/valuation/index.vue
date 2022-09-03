@@ -22,7 +22,7 @@ const addRow = () => {
 		name: "请输入名称",
 		type: "213",
 		unit: "斤",
-		amount: 0.0,
+		amount: 1.0,
 		price: 0.0,
 		totalPrice: 0.0,
 		tariff: 0.0,
@@ -45,10 +45,9 @@ const remoteMethod = (query: string) => {
 	if (query) {
 		loading.value = true;
 		getGoodsByWordsApi({ words: query }).then(res => {
-			console.log(res.data);
 			loading.value = false;
 			if (res.data) {
-				options.value = res.data as Goods.ResGoods[];
+				options.value = res.data.goods as Goods.ResGoods[];
 			}
 		});
 	} else {
@@ -57,7 +56,6 @@ const remoteMethod = (query: string) => {
 };
 
 const goodsSelected = (tableIndex: number, val: any) => {
-	console.log(tableIndex, val);
 	const goodIndex = options.value.findIndex(el => el.name == val);
 	if (goodIndex !== -1) {
 		dataSource[tableIndex].price = options.value[goodIndex].price;
