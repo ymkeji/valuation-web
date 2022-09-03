@@ -45,6 +45,7 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
+          key: ${{ secrets.RSA_PRIVATE_KEY }}
           port: 22
           script: |
             docker stop valuation-web && docker rm valuation-web
