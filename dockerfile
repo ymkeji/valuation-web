@@ -4,7 +4,7 @@ WORKDIR /code
 
 ADD package.json /code
 
-RUN npm install --registry=https://registry.npmmirror.com
+RUN npm install
 
 ADD . /code
 
