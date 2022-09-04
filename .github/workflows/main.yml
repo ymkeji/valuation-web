@@ -50,4 +50,4 @@ jobs:
             docker stop valuation-web && docker rm valuation-web
             docker image prune -a
             docker pull ${{ env.IMAGE }}:${{ env.TAG }}
-            docker run -itd --name valuation-web -p 4000:80 --restart=always ${{ env.IMAGE }}:${{ env.TAG }}
+            docker run -d --name valuation-web -p 4000:80 --restart=always ${{ env.IMAGE }}:${{ env.TAG }}

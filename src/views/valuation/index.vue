@@ -20,8 +20,8 @@ const addRow = () => {
 	const newRow: valuationRow = {
 		num: dataSource.length + 1,
 		name: "请输入名称",
-		type: "213",
-		unit: "斤",
+		type: "-",
+		unit: "-",
 		amount: 1.0,
 		price: 0.0,
 		totalPrice: 0.0,
