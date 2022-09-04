@@ -34,6 +34,11 @@ jobs:
           platforms: linux/amd64
           tags: ${{ env.IMAGE }}:${{ env.TAG }}
 
+  deploy:
+    name: deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: Executing remote ssh commands using password
         uses: appleboy/ssh-action@master
         with:
