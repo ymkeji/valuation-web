@@ -91,5 +91,6 @@ export namespace Goods {
 		price: number;
 		type: string;
 		unit: string;
+		tariff: number;
 	}
 }
