@@ -12,6 +12,11 @@
 			"path": "/valuation/index"
 		},
 		{
+			"icon": "goods",
+			"title": "商品管理",
+			"path": "/goods/index"
+		},
+		{
 			"icon": "histogram",
 			"title": "数据大屏",
 			"path": "/dataScreen"

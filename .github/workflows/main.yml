@@ -45,7 +45,7 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          port: 22
+          port: ${{ secrets.SSH_PORT }}
           script: |
             docker stop valuation-web && docker rm valuation-web
             docker image prune -a
