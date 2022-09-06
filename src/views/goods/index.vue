@@ -5,7 +5,8 @@
 			<template #tableHeader="scope">
 				<el-button type="primary" :icon="CirclePlus" @click="downloadFile">新增用户</el-button>
 				<el-button type="primary" :icon="Upload" plain @click="downloadFile">批量添加用户</el-button>
-				<el-button type="primary" :icon="Download" plain @click="downloadFile">导出用户数据</el-button>
+				<el-button type="primary" :icon="Download" plain @click="downloadFile">导出数据</el-button>
+				<el-button type="primary" :icon="Download" plain @click="importExcel">导入数据</el-button>
 				<el-button
 					type="danger"
 					:icon="Delete"
@@ -41,23 +42,28 @@
 				<el-button type="primary" link :icon="Delete">删除</el-button>
 			</template>
 		</ProTable>
-		<UserDrawer ref="drawerRef" />
-		<ImportExcel ref="dialogRef" />
+		<el-dialog v-model="importExcelVisible" title="导入数据">
+			<el-upload action="#" drag :limit="1" :http-request="uploadExcel">
+				<el-icon class="el-icon--upload"><upload-filled /></el-icon>
+				<div class="el-upload__text">文件拖拽到此处以进行上传或<em>点击上传</em></div>
+				<template #tip>
+					<div class="el-upload__tip">xlsx/xlx files with a size less than 500kb</div>
+				</template>
+			</el-upload>
+		</el-dialog>
 	</div>
 </template>
 
 <script setup lang="tsx" name="useComponent">
 import { ref, reactive } from "vue";
-
+import type { UploadRequestOptions } from "element-plus";
 import { ColumnProps } from "@/components/ProTable/interface";
 import { useDownload } from "@/hooks/useDownload";
 import { useAuthButtons } from "@/hooks/useAuthButtons";
 import ProTable from "@/components/ProTable/index.vue";
-import ImportExcel from "@/components/ImportExcel/index.vue";
-import UserDrawer from "@/views/proTable/components/UserDrawer.vue";
-import { CirclePlus, Delete, Download, Upload } from "@element-plus/icons-vue";
+import { CirclePlus, Delete, Download, Upload, UploadFilled } from "@element-plus/icons-vue";
 import { getUserList, exportUserInfo, getUserStatus, getUserGender } from "@/api/modules/user";
-
+const importExcelVisible = ref(false);
 // 获取 ProTable 元素，调用其获取刷新数据方法（还能获取到当前查询参数，方便导出携带参数）
 const proTable = ref();
 
@@ -127,5 +133,13 @@ const columns: Partial<ColumnProps>[] = [
 // 导出用户列表
 const downloadFile = async () => {
 	useDownload(exportUserInfo, "用户列表", proTable.value.searchParam);
+};
+
+const importExcel = () => {
+	importExcelVisible.value = true;
+};
+
+const uploadExcel = async (options: UploadRequestOptions) => {
+	console.log(options);
 };
 </script>
